@@ -1,0 +1,19 @@
+{
+  "name": "foothead",
+  "version": "1.0.0",
+  "description": "Home for Customized FIFA Tournaments",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "keywords": ["FIFA", "Tournament", "FootHead"],
+  "author": "Supratim Kar<supratim.kar099@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
