@@ -11,6 +11,6 @@ const corsOptions = {
     },
     credentials: true,
     optionsSuccessStatus: 200 // older browsers, smart TVs may have a problem with 204
-}
+};
 
-module.exports = corsOptions
+module.exports = corsOptions;

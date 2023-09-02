@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const PlayerSchema = new mongoose.Schema({
     identifier: {
@@ -15,6 +15,6 @@ const PlayerSchema = new mongoose.Schema({
         enum: ['ACTIVE', 'INACTIVE'],
         default: 'ACTIVE'
     }
-})
+});
 
-module.exports = mongoose.model('Player', PlayerSchema)
+module.exports = mongoose.model('Player', PlayerSchema);

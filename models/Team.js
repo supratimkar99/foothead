@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const TeamSchema = new mongoose.Schema({
     identifier: {
@@ -10,6 +10,6 @@ const TeamSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-})
+});
 
-module.exports = mongoose.model('Team', TeamSchema)
+module.exports = mongoose.model('Team', TeamSchema);
