@@ -2,14 +2,13 @@ require('dotenv').config()
 const express = require('express');
 const app = express();
 const path = require('path');
-const { logger } = require('./middleware/logger');
+const { logger, logEvents } = require('./middleware/logger');
 const errorHandler = require('./middleware/errorHandler');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
 const connectDB = require('./config/dbConn');
 const mongoose = require('mongoose');
-const { logEvents } = require('./middleware/logger');
 const PORT = process.env.PORT || 4000;
 
 console.log("Environment: ", process.env.NODE_ENV);
@@ -26,7 +25,9 @@ app.use(cookieParser());
 
 app.use('/', express.static(path.join(__dirname, 'public')));
 
-app.use('/', require('./routes/route'));
+app.use('/', require('./routes/root'));
+app.use('/users', require('./routes/userRoutes'));
+app.use('/players', require('./routes/playerRoutes'));
 
 app.all('*', (req, res) => {
     res.status(404)
@@ -47,6 +48,6 @@ mongoose.connection.once('open', () => {
 })
 
 mongoose.connection.on('error', err => {
-    console.log(err);
+console.log(err);
     logEvents(`${err.no}: ${err.code}\t${err.syscall}\t${err.hostname}`, 'mongoErrLog.log');
 })

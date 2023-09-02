@@ -1,23 +1,15 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const TeamSchema = new mongoose.Schema({
+    identifier: {
+        type: String,
+        required: true,
+        unique: true,
+    },
     fullname: {
         type: String,
         required: true
     },
-    shortname: {
-        type: String,
-        required: true
-    },
-    legacyName: {
-        type: String,
-        default: 'N/A'
-    },
-    universe: {
-        type: String,
-        enum: ['CHOO', 'BEST'],
-        default: 'CHOO'
-    }
-});
+})
 
-module.exports = mongoose.model('Team', TeamSchema);
+module.exports = mongoose.model('Team', TeamSchema)

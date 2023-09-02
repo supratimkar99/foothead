@@ -1,19 +1,20 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const PlayerSchema = new mongoose.Schema({
     identifier: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
     },
     fullname: {
         type: String,
         required: true
     },
-    universe: {
+    activeStatus: {
         type: String,
-        enum: ['CHOO', 'BEST'],
-        default: 'CHOO'
+        enum: ['ACTIVE', 'INACTIVE'],
+        default: 'ACTIVE'
     }
-});
+})
 
-module.exports = mongoose.model('Player', PlayerSchema);
+module.exports = mongoose.model('Player', PlayerSchema)
