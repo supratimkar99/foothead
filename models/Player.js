@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 
-const PlayerSchema = new mongoose.Schema({
-    identifier: {
+const playerSchema = new mongoose.Schema({
+    _id: {
         type: String,
         required: true,
-        unique: true,
     },
     fullname: {
         type: String,
@@ -17,4 +16,4 @@ const PlayerSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Player', PlayerSchema);
+module.exports = mongoose.model('Player', playerSchema);
