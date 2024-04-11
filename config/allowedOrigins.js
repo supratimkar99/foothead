@@ -1,6 +1,6 @@
 const allowedOrigins = [
-    'https://www.futheadpvtltd.com',
-    'https://futheadpvtltd.com'
+    'https://foothead.onrender.com',
+    'http://localhost:8080'
 ];
 
 module.exports = allowedOrigins;
