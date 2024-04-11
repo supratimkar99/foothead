@@ -8,7 +8,6 @@ const corsOptions = {
         } else {
             callback(new Error('Not allowed by CORS'));
         }
-        callback(null, true);
     },
     credentials: true,
     optionsSuccessStatus: 200 // older browsers, smart TVs may have a problem with 204
