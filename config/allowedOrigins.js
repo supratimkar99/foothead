@@ -1,6 +1,5 @@
 const allowedOrigins = [
-    'https://www.futheadpvtltd.com',
-    'https://futheadpvtltd.com'
+    'https://foothead.onrender.com'
 ];
 
 module.exports = allowedOrigins;
