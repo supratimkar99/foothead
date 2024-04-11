@@ -4,6 +4,7 @@ const Stage = require('../models/Stage');
 const Tournament = require('../models/Tournament');
 const MatchCounter = require('../models/MatchCounter');
 const asyncHandler = require('express-async-handler');
+const jwt = require('jsonwebtoken');
 
 // @desc Get all tournaments
 // @route GET /tournaments
@@ -22,7 +23,7 @@ const getMatchesByQuery = asyncHandler( async (req, res) => {
     } else if ( player !== undefined ) {
         matches = await Match.find({ $or: [{ 'scoreline.home.player': player }, { 'scoreline.away.player': player }] }).sort({ identifier: -1 }).lean().exec();
     } else {
-        matches = await Match.find().lean().exec();
+        matches = await Match.find().sort({ identifier: -1 }).lean().exec();
     }
 
     if(!matches?.length) {
@@ -129,7 +130,8 @@ const authenticate = asyncHandler( async(req, res) => {
     const hashedPassword = decodeURIComponent(process.env.ADMIN_PASSWORD);
     const isPasswordCorrect = bcrypt.compareSync(password, hashedPassword);
     if (isPasswordCorrect) {
-        res.status(201).json({ message: 'Authentication Successfull!'});
+        const token = jwt.sign({ userId: 'Admin'}, process.env.JWT_KEY, { expiresIn: '4h' });
+        res.status(200).json({ token: token, message: 'Authentication Successfull!'});
     } else {
         res.status(400).json({ message: 'Incorrect Password' });
     }

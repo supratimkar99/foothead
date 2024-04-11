@@ -8,7 +8,7 @@ const asyncHandler = require('express-async-handler');
 // @route GET /tournaments
 // @access Public
 const getAllTournaments = asyncHandler( async (req, res) => {
-    const tournaments = await Tournament.find().lean().exec();
+    const tournaments = await Tournament.find().sort({ serialNumber: -1 }).lean().exec();
     if (!tournaments?.length) {
         return res.status(400).json({ message: 'No tournaments found' });
     }
